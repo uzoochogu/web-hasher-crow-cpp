@@ -1,0 +1,20 @@
+{
+  "name": "crow-web-hasher",
+  "version": "0.0.1",
+  "dependencies": [
+    {
+      "name": "crow",
+      "version>=": "1.0-5"
+    },
+    {
+      "name": "openssl",
+      "version>=": "3.1.4"
+    },
+    {
+      "name": "xxhash",
+      "version>=": "0.8.2"
+    }
+  ],
+  "builtin-baseline": "a1a1cbc975abf909a6c8985a6a2b8fe20bbd9bd6"
+}
+  
