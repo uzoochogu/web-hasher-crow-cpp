@@ -1,0 +1,23 @@
+{{> base_mustache.html}}
+<body class="fancybg-1">
+  <div class="ui container">
+    <h2 style="margin-top: 10px">{{ page_title }}</h2>
+    <div class="ui secondary pointing menu">
+      <a class="{{isActive32}} item" href="/H32">StrH32</a>
+      <a class="{{isActive64}} item" href="/H64">StrH64</a>
+      <a class="{{isActive128}} item" href="/H128">StrH128</a>
+      <div class="right menu">
+        <a class="ui item" href="/stop">Stop Server</a>
+      </div>
+    </div>
+    <div class="ui segment">
+      <div class="ui placeholder segment">
+        <div class="ui icon header">
+          <i class="bell icon"></i>
+          Ding! Ding! Here is your hash:<br />
+          <code>{{ string_hash }}</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
