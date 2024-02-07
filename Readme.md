@@ -1,21 +1,21 @@
 # CrowCpp Hasher application
 
-A simple template application for demonstrating a Crowcpp webserver. It generates 32, 64 and 128-bit hashes of input strings using the xxhash hasing library. It is based off this [`string hasher`](https://github.com/Ohjurot/WebStringHasher) which uses using [`cpp-httplib`](https://github.com/yhirose/cpp-httplib 
-)(web server), [`jsoncpp`](https://github.com/open-source-parsers/jsoncpp) , [`xxHash`](https://github.com/Cyan4973/xxHash) and  [`inja`](https://github.com/pantor/inja). 
+A simple template application for demonstrating a [`CrowCpp`](https://github.com/CrowCpp/Crow) webserver. It generates 32, 64 and 128-bit hashes of input strings using the [`xxHash`](https://github.com/Cyan4973/xxHash) hashing library. It is based off this [`string hasher`](https://github.com/Ohjurot/WebStringHasher) which uses [`cpp-httplib`](https://github.com/yhirose/cpp-httplib 
+), [`jsoncpp`](https://github.com/open-source-parsers/jsoncpp) , [`xxHash`](https://github.com/Cyan4973/xxHash) and  [`inja`](https://github.com/pantor/inja).
 
 
 
 
-[`CrowCpp`](https://github.com/CrowCpp/Crow) is a comprehensive framework and has built-in libraries for json parsing, html templating, base64 encoding, compression etc. I made use of its built-in Json parser and a templating engine rather than inja and jsoncpp. But CrowCpp is also library agnostic and can be used with custom libraries for each of these functionalities. I provide a [`duplicate source`](src\nlohmann-json-inja-impl.cpp) demonstrating it with Nlohmann Json library and Inja templating engine.
+[`CrowCpp`](https://github.com/CrowCpp/Crow) is a comprehensive framework and has built-in libraries for json parsing, html templating, base64 encoding, compression etc. I made use of its built-in Json parser and a templating engine rather than inja and jsoncpp. But CrowCpp is also library agnostic and can be used with custom libraries for each of these functionalities. I provided a [`duplicate source`](src\nlohmann-json-inja-impl.cpp) demonstrating it with [`Nlohmann Json library`](https://json.nlohmann.me/api/basic_json/parse/) and [`Inja templating engine`](https://github.com/pantor/inja).
 
-`CrowCpp` built-in Json parsing library is convenient but is not as full featured as more established libraries. But for this appication it is good enough. Then for the HTML templating, `crowcpp` uses [`mustache`](https://mustache.github.io/mustache.5.html) which has a fromal specication with lots of features. It also has a useful [`playground`](https://jgonggrijp.gitlab.io/wontache/playground.html) to explore its templating capabilities.
-One exploration, it seems that CrowCpp does not support the full mustache specification and this can be a problem. Specifically [`parents, blocks and dynamic names don't seem to be fully supported`](https://github.com/CrowCpp/Crow/issues/761). If this is fixed, it would make templating more robust and significantly easier.
-
-
- `Inja` can be used as an alternative as seen in the duplicate source. Note that they have different language structure.
+`CrowCpp` built-in Json parsing library is convenient but is not as full featured as more established libraries. But for this appication it is good enough. Then for the HTML templating, `crowcpp` uses [`mustache`](https://mustache.github.io/mustache.5.html) which has a formal specication with lots of features. It also has a useful [`playground`](https://jgonggrijp.gitlab.io/wontache/playground.html) to explore its templating capabilities.
+On exploration, it seems that CrowCpp does not support the full mustache specification and this can be a problem. Specifically [`parents, blocks and dynamic names don't seem to be fully supported`](https://github.com/CrowCpp/Crow/issues/761). If this is fixed, it would make templating more robust and significantly easier.
 
 
-This is a single page web application that sends requests to the server for all the computation involved. Thus request based. To make a more responsive application, you can integrate this into a React(Insert any JS framework) application or a WASM frontend. I will explore this and update accordingly. A self signed SSL key was used in this project for demonstration.
+ `Inja` can be used as an alternative as seen in the duplicate source ( see the `.tpl.html` files in the [`templates`](./app/templates) folder).
+
+
+This is a single page web application that sends requests to the server for all the computation involved. Thus it is request based. To make a more responsive application, you can integrate this into a React(Insert any JS framework) application or a WASM frontend. I will explore this and update accordingly. A self signed SSL key was used in this project for demonstration.
 
 ## Dependencies
 ```sh
@@ -60,7 +60,7 @@ cmake --build .
 # Run (Depending on Generator mode)
 ./Debug/crow-web-hasher
 ```
-I also provided an alternative [`vcpkg.json`](vcpkg-nlohmann-inja.json) file if you want to run the duplicate code. Uncomment the find_library and link commands in the [`CMakeLists.txt`](./CMakeLists.txt) file.
+I also provided an alternative [`vcpkg-nlohmann-inja.json`](vcpkg-nlohmann-inja.json) file if you want to run the duplicate code. Uncomment the `find_library` and `target_link_libraries` commands in the [`CMakeLists.txt`](./CMakeLists.txt) file.
 
 ### Vcpkg Instructions without a vcpkg.json file
 Install the following libraries globally using vcpkg:
@@ -70,7 +70,7 @@ xxhash
 Openssl
 ```
 
-You can navigate to their [`package list`](https://vcpkg.io/en/packages) to browse features. (and Nlohmann and inja to run the duplicate code.)
+You can navigate to their [`package list`](https://vcpkg.io/en/packages) to browse features. (add Nlohmann and inja to run the duplicate code.)
 ```bash
 # Navigate to vcpkg directory
 
